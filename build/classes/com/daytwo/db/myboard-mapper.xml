@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="loginmapper">
+<!-- dao에 썼던거 sql문관련 맵핑 -->
+	<!-- sql변수명 다를때 -->
+	<resultMap type="LoginDto" id="myboardmap">
+		<result property="member_id" column="MEMBER_ID" />
+		<result property="member_pw" column="MEMBER_PW" />
+		<result property="member_name" column="MEMBER_NAME" />
+		<result property="member_addr" column="MEMBER_ADDR" />
+		<result property="member_phone" column="MEMBER_PHONE" />
+		<result property="member_email" column="MEMBER_EMAIL" />
+	</resultMap>
+	
+	
+  	<select id="selectList" resultType="loginDto">
+   		 SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_ROLE
+   		 FROM MEMBER
+  	</select>
+  	
+  	<insert id="reginsert" parameterType="loginDto">
+  		INSERT INTO MEMBER
+  		VALUES(MEMBERSEQ.NEXTVAL, #{member_id}, #{member_pw}, #{member_name}, #{member_addr}, #{member_phone}, #{member_email}, 'Y', 'USER', null)
+  	</insert>
+  	
+  	<select id="login" parameterType="loginDto" resultType="loginDto">
+  		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_ROLE
+  		FROM MEMBER
+  		WHERE MEMBER_ID = #{member_id}
+  		AND MEMBER_PW = #{member_pw}
+  	</select>
+  	
+  	<select id="idCheck" resultType="int">
+  		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_ROLE
+  		FROM MEMBER
+  		WHERE MEMBER_ID = #{member_id}
+  	</select>
+  	
+  	<!-- 네이버 로그인 영역 -->
+  	<select id="naverCheck" resultType="int">
+  		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_ROLE
+  		FROM MEMBER
+  		WHERE MEMBER_EMAIL = #{member_email}
+  	</select>
+  	
+  	<select id="logininfo" parameterType="String" resultType="loginDto">
+  		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_ROLE
+  		FROM MEMBER
+  		WHERE MEMBER_EMAIL = #{member_email}
+  	</select>
+  	
+  	
+  	
+</mapper>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>semi_pro</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>mainIndex.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>Board</servlet-name>
+  	<servlet-class>com.daytwo.controller.BoardServlet</servlet-class>	
+  </servlet>
+  <servlet>
+  	<servlet-name>Member</servlet-name>
+  	<servlet-class>com.daytwo.controller.MemberServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>MemberProfile</servlet-name>
+  	<servlet-class>com.daytwo.user.MemberProfileServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>KaKaoServlet</servlet-name>
+  	<servlet-class>com.daytwo.controller.KaKaoServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>NaverServlet</servlet-name>
+  	<servlet-class>com.daytwo.controller.NaverServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RegistServlet</servlet-name>
+  	<servlet-class>com.daytwo.controller.RegistServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>Board</servlet-name>
+  	<url-pattern>/board.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Member</servlet-name>
+  	<url-pattern>/member.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MemberProfile</servlet-name>
+  	<url-pattern>/profile.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>KaKaoServlet</servlet-name>
+  	<url-pattern>/kakao.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>NaverServlet</servlet-name>
+  	<url-pattern>/naver.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RegisServlet</servlet-name>
+  	<url-pattern>/regist.do</url-pattern>
+  </servlet-mapping>
+
+  
+</web-app>
